@@ -114,3 +114,5 @@ If you log into Learn.co in the Incognito Window, it will create the cookies nee
 
 
 
+
+<a href='https://learn.co/lessons/sinatra-mechanics-of-sessions-readme' data-visibility='hidden'>View this lesson on Learn.co</a>
