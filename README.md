@@ -77,7 +77,7 @@ Even though you set up a session on the server, you can view the contents of the
 
 Visit any website that requires you to log in and make sure that you're logged in already before completing the next steps. We'll be using learn.co in this example.
 
-Go ahead and open up the Developer Tools. In Chrome, you can do this by right clicking and selecting `Inspect Element`. Once the developer tools are open, click the `Resources`. On the right side, you'll see a section that says `Cookies` and it will bring up all the cookies loaded on the site. You can see that several of them say `Session`.
+Go ahead and open up the Developer Tools. In Chrome, you can do this by right clicking and selecting `Inspect Element`. Once the developer tools are open, click the `Resources`. On the left side, you'll see a section that says `Cookies` and it will bring up all the cookies loaded on the site. You can see that several of them say `Session`.
 
 <img src="https://s3.amazonaws.com/learn-verified/browser-cookies.png">
 
