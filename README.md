@@ -24,7 +24,7 @@ configure do
 end
 ```
 
-The `configure` block above is part of a built-in settings that control whether features are enabled or not. In this case, we're enabling the sessions feature.
+The `configure` block above is a part of built-in settings that control whether features are enabled or not. In this case, we're enabling the sessions feature.
 
 The first line of the configure block `enable: sessions`, turns sessions on. The next line `set :session_secret, "secret"` is an encryption key that will be used to create a `session_id`. A `session_id` is a unique string of letters and numbers that is unique per session and is stored in the browser cookie. You can actually set your session secret to anything that you want. Don't worry too much about understanding how the `session_id` works. It's just part of the mechanics of getting a secure private session working. You won't need to interact with it pretty much ever.
 
@@ -107,7 +107,7 @@ First, there is a way to clear the cookies with the developer tools. Simply righ
 
 As soon as you remove the cookies, you'll notice that more likely than not, you'll be logged out of the site.
 
-Second, you can open an `Incognito Window` in Chrome which will not store any cookies. And Incognito Window allows you to browse without Chrome storing your browsing history and cookie store. You can open a browser in Incognito by selecting `File < New Incognito Window`. 
+Second, you can open an `Incognito Window` in Chrome which will not store any cookies. An Incognito Window allows you to browse without Chrome storing your browsing history and cookie store. You can open a browser in Incognito by selecting `File < New Incognito Window`. 
 
 If you log into Learn.co in the Incognito Window, it will create the cookies needed to run that session, but will not have cached cookies. This can be helpful when debugging session and cookie issues.
 
@@ -115,4 +115,6 @@ If you log into Learn.co in the Incognito Window, it will create the cookies nee
 
 
 
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-mechanics-of-sessions-readme' title='Mechanics of A Session'>Mechanics of A Session</a> on Learn.co and start learning to code for free.</p>
+<a href='https://learn.co/lessons/sinatra-mechanics-of-sessions-readme' data-visibility='hidden'>View this lesson on Learn.co</a>
+
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-mechanics-of-sessions-readme'>Mechanics of Sessions</a> on Learn.co and start learning to code for free.</p>
