@@ -26,7 +26,7 @@ end
 
 The `configure` block above is a part of built-in settings that control whether features are enabled or not. In this case, we're enabling the sessions feature.
 
-The first line of the configure block `enable: sessions`, turns sessions on. The next line `set :session_secret, "secret"` is an encryption key that will be used to create a `session_id`. A `session_id` is a unique string of letters and numbers that is unique per session and is stored in the browser cookie. You can actually set your session secret to anything that you want. Don't worry too much about understanding how the `session_id` works. It's just part of the mechanics of getting a secure private session working. You won't need to interact with it pretty much ever.
+The first line of the configure block `enable :sessions`, turns sessions on. The next line `set :session_secret, "secret"` is an encryption key that will be used to create a `session_id`. A `session_id` is a unique string of letters and numbers that is unique per session and is stored in the browser cookie. You can actually set your session secret to anything that you want. Don't worry too much about understanding how the `session_id` works. It's just part of the mechanics of getting a secure private session working. You won't need to interact with it pretty much ever.
 
 The `session_secret` is a pretty minimal security feature, but the basic idea is that setting your `:session_secret` to a word that other people don't know makes it harder for someone to create a fake session_id and hack into your site without signing up or signing in.
 
