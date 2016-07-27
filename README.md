@@ -1,8 +1,8 @@
-# Mechanics of A Session
+# Mechanics of Sessions
 
 ## Objectives
 
-1.  View session data in the browser with Developer Tools
+1. View session data in the browser with Developer Tools
 2. Clear session cookies using Developer Tools
 3. Set up a session on your servers
 4. Explain that a session is just a hash that stores specific data
@@ -10,12 +10,11 @@
 
 ## Setting Up A Session
 
-Before we dive into the mechanics of setting up a session, it's important to note that a session is basically just a hash that stores data on the server, and passes the data to the client as a cookie. You can access the data stored in the session in the same way you would any hash in Ruby.
-
+Before we dive into the mechanics of setting up a session, it's important to note that a session is basically just a hash that stores data on the server and passes that data to the client as a cookie. You can access the data stored in the session in the same way you would any hash in Ruby.
 
 And now to set up the session...
 
-In Sinatra, you want to set up your session in your controller, `app.rb` by using Sinatra's `configure block` to enable sessions in your app:
+In Sinatra, we enable sessions within the controller (e.g., `app.rb`) by adding two lines in the `configure` block:
 
 ```ruby
 configure do
@@ -26,24 +25,23 @@ end
 
 The `configure` block above is a part of built-in settings that control whether features are enabled or not. In this case, we're enabling the sessions feature.
 
-The first line of the configure block `enable :sessions`, turns sessions on. The next line `set :session_secret, "secret"` is an encryption key that will be used to create a `session_id`. A `session_id` is a unique string of letters and numbers that is unique per session and is stored in the browser cookie. You can actually set your session secret to anything that you want. Don't worry too much about understanding how the `session_id` works. It's just part of the mechanics of getting a secure private session working. You won't need to interact with it pretty much ever.
+The first line of the configure block, `enable :sessions`, turns sessions on. The next line, `set :session_secret, "secret"`, is an encryption key that will be used to create a `session_id`. A `session_id` is a string of letters and numbers that is unique to a given user's session and is stored in the browser cookie. You can actually set your `session_secret` to anything that you want. Don't worry too much about understanding how the `session_id` works. It's just part of the mechanics behind getting a secure private session working. You probably won't ever need to interact with it.
 
-The `session_secret` is a pretty minimal security feature, but the basic idea is that setting your `:session_secret` to a word that other people don't know makes it harder for someone to create a fake session_id and hack into your site without signing up or signing in.
+`session_secret` is a pretty minimal security feature, but the basic idea is that setting your `:session_secret` to a word that other people don't know makes it harder for someone to create a fake session_id and hack into your site without signing up or signing in.
 
 ## Using Sessions
 
-In order to keep track of a current user throughout a session, you would want to set up the `session` hash to store the `user_id` in the hash during a controller action. Because we haven't covered how to set up log in and log out, we can use the `session` hash to store the user's name:
+In order to keep track of a current user throughout a session, we need to set up the `session` hash to store the `user_id` in the hash during a controller action. Since we haven't covered how to set up logins and logouts, we can simply use the `session` hash to store the user's name:
 
 ```ruby
-
 get '/hey' do 
   @session = session
 end
 ```
 
-In the example above, we have a route `/hey` that gets processed by a GET request. Because we enabled sessions in our app, every controller action has access to the `session` hash.
+In the example above, we have a route, `/hey`, that gets processed by a `GET` request. Because we enabled sessions in our app, every controller action has access to the `session` hash.
 
-We stored our session hash in the instance variable `@session` so that our views will have access to the session data. In this case `@session` looks like this:
+We stored the `session` hash in the instance variable `@session` so that our views will have access to the session data. In this case, `@session` now looks like this:
 
 ```ruby
 @session = {
@@ -59,7 +57,7 @@ We stored our session hash in the instance variable `@session` so that our views
 
 You can access information from the hash just like you would any hash. `@session["session_id"]` will return `"dd32f512ee239ad74aa6f10c8cad37ce28d6c6922eff252ed641b1017130fe22"`.
 
-You can also modify and add data to the session hash by adding a key-value pair:
+You can also modify and add data to the `session` hash by adding a key-value pair:
 
 ```ruby
 get '/hey' do 
@@ -73,48 +71,40 @@ end
 
 ### Viewing in Developer Tools
 
-Even though you set up a session on the server, you can view the contents of the session in the browser as a cookie using Developer Tools.
+Even though sessions are created on the server, you can view the contents of the `session` hash as a cookie in your browser using Developer Tools.
 
-Visit any website that requires you to log in and make sure that you're logged in already before completing the next steps. We'll be using learn.co in this example.
+Visit any website that requires a login, and make sure that you're already logged in before completing the next steps. We'll be using [Learn.co](https://learn.co) in this example.
 
-Go ahead and open up the Developer Tools. In Chrome, you can do this by right clicking and selecting `Inspect Element`. Once the developer tools are open, click the `Resources`. On the left side, you'll see a section that says `Cookies` and it will bring up all the cookies loaded on the site. You can see that several of them say `Session`.
+Go ahead and open up your browser's Developer Tools. In Chrome, you can do this by right-clicking and selecting `Inspect`. Once the Developer Tools are open, click on the `Resources` tab. On the left side of the tools, open up the `Cookies` folder, and it will bring up all of the cookies loaded on the site. You can see that several of them say `Session` in the `Expires / Max-Age` column.
 
-<img src="https://s3.amazonaws.com/learn-verified/browser-cookies.png">
+![View cookies in Developer Tools](https://s3.amazonaws.com/learn-verified/browser-cookies.png)
 
 ### Viewing in Chrome Settings
 
-You can see the details of these cookies in the Chrome browser by selecting the hamburger icon in the top right corner and selecting settings:
+You can also see the details of these cookies in the Chrome browser by selecting the hamburger icon in the top right corner and navigating to `Settings`:
 
-<img src="https://s3.amazonaws.com/learn-verified/chrome-settings.png">
+![Settings](https://s3.amazonaws.com/learn-verified/chrome-settings.png)
 
-Scroll all the way to the bottom the page and select the link `Show advanced settings...`. Next, scroll down till you see `Privacy` and select `Content settings...`:
+Scroll all the way to the bottom the page and click on the `Show advanced settings...` link. Next, scroll down until you see `Privacy`, and then click the `Content settings...` button:
 
-<img src="https://s3.amazonaws.com/learn-verified/privacy-content-settings.png">
+![Content settings...](https://s3.amazonaws.com/learn-verified/privacy-content-settings.png)
 
-And last, select `All Cookies and Data`:
+Finally, click the `All cookies and site data...` button:
 
-<img src="https://s3.amazonaws.com/learn-verified/all-cookies-data.png">
+![All cookies and site data...](https://s3.amazonaws.com/learn-verified/all-cookies-data.png)
 
-This will bring up a list of all the sites that your browser has stored cookies from. Search for `learn.co` and click to see a list of all the cookies Learn keeps. You should see one called `_feyonce_session`. That's the session cookie learn uses to keep track of a current user.
+This will bring up a list of all of the sites that your browser has stored cookies from. Search for `learn.co` and click to see a list of all the cookies that Learn sets. You should see one called `_feyonce_session`. That's the session cookie that Learn uses to keep track of the current user (in this case, you).
 
 ## Clearing Sessions
 
-There are several ways to clear a session cookie. The first is to simply log out of the site. At that point, you automatically clear any browsing data. 
+There are several ways to clear a session cookie. The first is to simply log out of the site. That ends the current session, at which point all session cookies are automatically cleared.
 
-First, there is a way to clear the cookies with the developer tools. Simply right click on a session and select either `Delete` or `Delete All from learn.co`
+You can also clear session cookies from the Developer Tools interface. Simply right-click on a session and select either `Delete` or `Clear All from "learn.co"`.
 
-<img src="https://s3.amazonaws.com/learn-verified/clear-cookies.png">
+![Clear cookies](https://s3.amazonaws.com/learn-verified/clear-cookies.png)
 
-As soon as you remove the cookies, you'll notice that more likely than not, you'll be logged out of the site.
+If you remove the session cookies and refresh the page, you'll notice that you've been logged out of the site.
 
-Second, you can open an `Incognito Window` in Chrome which will not store any cookies. An Incognito Window allows you to browse without Chrome storing your browsing history and cookie store. You can open a browser in Incognito by selecting `File < New Incognito Window`. 
-
-If you log into Learn.co in the Incognito Window, it will create the cookies needed to run that session, but will not have cached cookies. This can be helpful when debugging session and cookie issues.
-
-
-
-
-
-<a href='https://learn.co/lessons/sinatra-mechanics-of-sessions-readme' data-visibility='hidden'>View this lesson on Learn.co</a>
+Chrome also comes bundled with a special 'Incognito' mode that doesn't persist _any_ cookies –– session or otherwise –– beyond the scope of a given browsing session. If you log in to Learn from an Incognito window, Chrome will create the cookies needed to run that session, but it will not create any long-term, cached cookies. Because of this functionality, Incognito mode is often helpful while debugging session and cookie issues.
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-mechanics-of-sessions-readme'>Mechanics of Sessions</a> on Learn.co and start learning to code for free.</p>
