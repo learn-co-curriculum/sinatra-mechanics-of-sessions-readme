@@ -2,10 +2,10 @@
 
 ## Objectives
 
-1. View session data in the browser with Developer Tools
-2. Clear session cookies using Developer Tools
-3. Set up a session on your servers
-4. Explain that a session is just a hash that stores specific data
+1. View session data in the browser with Developer Tools.
+2. Clear session cookies using Developer Tools.
+3. Set up a session on your servers.
+4. Explain that a session is just a hash that stores specific data.
 
 
 ## Setting Up A Session
