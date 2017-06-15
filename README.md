@@ -75,7 +75,7 @@ Even though sessions are created on the server, you can view the contents of the
 
 Visit any website that requires a login, and make sure that you're already logged in before completing the next steps. We'll be using [Learn.co](https://learn.co) in this example.
 
-Go ahead and open up your browser's Developer Tools. In Chrome, you can do this by right-clicking and selecting `Inspect`. Once the Developer Tools are open, click on the `Resources` tab. On the left side of the tools, open up the `Cookies` folder, and it will bring up all of the cookies loaded on the site. You can see that several of them say `Session` in the `Expires / Max-Age` column.
+Go ahead and open up your browser's Developer Tools. In Chrome, you can do this by right-clicking and selecting `Inspect`. Once the Developer Tools are open, click on the `Application` tab. On the left side of the tools, open up the `Cookies` folder, and it will bring up all of the cookies loaded on the site. You can see that several of them say `Session` in the `Expires / Max-Age` column.
 
 ![View cookies in Developer Tools](https://s3.amazonaws.com/learn-verified/browser-cookies.png)
 
@@ -108,3 +108,5 @@ If you remove the session cookies and refresh the page, you'll notice that you'v
 Chrome also comes bundled with a special 'Incognito' mode that doesn't persist _any_ cookies –– session or otherwise –– beyond the scope of a given browsing session. If you log in to Learn from an Incognito window, Chrome will create the cookies needed to run that session, but it will not create any long-term, cached cookies. Because of this functionality, Incognito mode is often helpful while debugging session and cookie issues.
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-mechanics-of-sessions-readme'>Mechanics of Sessions</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/sinatra-mechanics-of-sessions-readme'>Mechanics of Sessions</a> on Learn.co and start learning to code for free.</p>
