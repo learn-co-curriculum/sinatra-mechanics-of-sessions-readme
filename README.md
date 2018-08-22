@@ -23,6 +23,11 @@ configure do
 end
 ```
 
+> **IMPORTANT**: You should **never** set your `session_secret` by hand, and especially not to something so trivially
+> simple as `"secret"`! We are doing this for the sake of demonstration this _one_ time. You are advised to learn more
+> about how to secure your sessions by following the [Using Sessions][secsin] documentation at the Sinatra home.
+
+
 The `configure` block above is a part of built-in settings that control whether features are enabled or not. In this case, we're enabling the sessions feature.
 
 The first line of the configure block, `enable :sessions`, turns sessions on. The next line, `set :session_secret, "secret"`, is an encryption key that will be used to create a `session_id`. A `session_id` is a string of letters and numbers that is unique to a given user's session and is stored in the browser cookie. You can actually set your `session_secret` to anything that you want. Don't worry too much about understanding how the `session_id` works. It's just part of the mechanics behind getting a secure private session working. You probably won't ever need to interact with it.
@@ -107,6 +112,11 @@ If you remove the session cookies and refresh the page, you'll notice that you'v
 
 Chrome also comes bundled with a special 'Incognito' mode that doesn't persist _any_ cookies –– session or otherwise –– beyond the scope of a given browsing session. If you log in to Learn from an Incognito window, Chrome will create the cookies needed to run that session, but it will not create any long-term, cached cookies. Because of this functionality, Incognito mode is often helpful while debugging session and cookie issues.
 
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-mechanics-of-sessions-readme'>Mechanics of Sessions</a> on Learn.co and start learning to code for free.</p>
+## Securing Your Session
+
+As we mentioned at the beginning, you should not define you `session_secret` as we do in this lab. The most
+secure method is to use a secure number generator to generate a secret and to share that secret, via
+environment variables in the shell, to Sinatra. This is covered in [their documentation][secsin].
+
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/sinatra-mechanics-of-sessions-readme'>Mechanics of Sessions</a> on Learn.co and start learning to code for free.</p>
