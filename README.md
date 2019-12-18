@@ -114,7 +114,7 @@ Chrome also comes bundled with a special 'Incognito' mode that doesn't persist _
 
 ## Securing Your Session
 
-As we mentioned at the beginning, you should not define you `session_secret` as we do in this lab. The most
+As we mentioned at the beginning, you should not define `session_secret` as we do in this lab. The most
 secure method is to use a secure number generator to generate a secret and to share that secret, via
 environment variables in the shell, to Sinatra. This is covered in [their documentation][secsin].
 
