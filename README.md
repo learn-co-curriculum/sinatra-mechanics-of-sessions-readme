@@ -25,8 +25,10 @@ end
 
 > **IMPORTANT**: You should **never** set your `session_secret` by hand, and especially not to something so trivially
 > simple as `"secret"`! We are doing this for the sake of demonstration this _one_ time. You are advised to learn more
-> about how to secure your sessions by following the [Using Sessions][secsin] documentation at the Sinatra home.
+> about how to secure your sessions by following the [Using Sessions][session] documentation from Sinatra's official
+> documentation.
 
+[session]: https://rubydoc.info/gems/sinatra#using-sessions
 
 The `configure` block above is a part of built-in settings that control whether features are enabled or not. In this case, we're enabling the sessions feature.
 
