@@ -121,4 +121,4 @@ secure method is to use a secure number generator to generate a secret and to sh
 environment variables in the shell, to Sinatra. This is covered in [their documentation][secsin].
 
 
-<p class='util--hide'>View <a href='https://learn.co/lessons/sinatra-mechanics-of-sessions-readme'>Mechanics of Sessions</a> on Learn.co and start learning to code for free.</p>
+
